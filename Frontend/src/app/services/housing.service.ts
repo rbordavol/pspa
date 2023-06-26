@@ -19,7 +19,11 @@ export class HousingService {
       [key: string] : any
     }
    }
-  
+
+   getAllCities() : Observable<string[]> {
+    return this.http.get<string[]>('http://localhost:5265/api/city');
+   }
+
    getProperty(id: number) : Observable<Property> {
     return this.getAllProperties().pipe(
       map(propertiesArray => {
@@ -56,17 +60,17 @@ this.property = new Property();
             this.property.City= String(prop[Object.keys(prop)[8]]);
             this.property.RTM= Number(prop[Object.keys(prop)[9]]);
             this.property.Image= String(prop[Object.keys(prop)[10]]);
-         
+
         }
         console.log(this.property);
         return this.property;*/
       })
     );
-    
+
   }
   getAllProperties(SellRent? : number) : Observable<Property[]> {
     return this.http.get('data/properties.json').pipe(
-      
+
       map(data => {
           const propertiesArray : Array<Property> = [];
           const localProperties = JSON.parse((localStorage.getItem('newProp') || '{}'));
@@ -74,7 +78,7 @@ this.property = new Property();
           if(localProperties){
             let cntx = Object.keys(localProperties).length;
             console.log('newProp count ' + cntx);
-        
+
             for(let ii=0; ii<cntx; ii++){
               console.log(ii);
               console.log(localProperties);
@@ -141,7 +145,7 @@ this.property = new Property();
           }
 
           let cnt = Object.keys(data).length;
-        
+
           for(let ii=0; ii<cnt; ii++){
             console.log(cnt);
             console.log(ii);
@@ -204,7 +208,7 @@ this.property = new Property();
                 PostedOn: String(Object.values(data)[ii].Name),
                 Image: "",
                 PostedBy: 0
-              });             
+              });
             }
           }
 

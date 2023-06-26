@@ -23,6 +23,7 @@ export class AddPropertyComponent implements OnInit {
 
   propertyTypes: Array<string> = ['House', 'Apartment', 'Duplex'];
   furnishTypes: Array<string> = ['Fully', 'Semi', 'Unfurnished'];
+  cityList!: string[];
 
   propertyView: IPropertyBase = {
     Id: 0,
@@ -38,14 +39,18 @@ export class AddPropertyComponent implements OnInit {
     Image: ''
   };
 
-  constructor(private router: Router, 
-    private fb: FormBuilder,    
+  constructor(private router: Router,
+    private fb: FormBuilder,
     private housingService: HousingService,
     private alertify: AlertifyService
     ) { }
 
   ngOnInit() {
     this.CreateAddPropertyForm();
+    this.housingService.getAllCities().subscribe(data => {
+      this.cityList = data;
+      console.log(data);
+    });
   }
 
   onBack(){
@@ -53,6 +58,7 @@ export class AddPropertyComponent implements OnInit {
   }
 
   onSubmit(){
+
     console.log('Congrats, form Submitted');
     console.log('SellRent=' + this.addPropertyForm.value.BasicInfo.SellRent);
     console.log(this.addPropertyForm);
