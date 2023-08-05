@@ -22,6 +22,7 @@
       "node_modules/@types",
       "src/alertifytype.d.ts"
     ],
+    "noImplicitAny": false,
     "skipLibCheck": true,
     "lib": [
       "es2020",

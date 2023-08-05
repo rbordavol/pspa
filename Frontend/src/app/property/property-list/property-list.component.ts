@@ -12,6 +12,10 @@ export class PropertyListComponent implements OnInit {
   SellRent = 1;
 
   properties!: IPropertyBase[];
+  City = '';
+  SearchCity = '';
+  SortbyParam = '';
+  SortDirection = 'asc';
 
   constructor(private route : ActivatedRoute, private housingService: HousingService) { }
 
@@ -27,7 +31,7 @@ export class PropertyListComponent implements OnInit {
       this.SellRent = 2;  //Means we are on rent-property URL else we are on base URL
     }
 
-
+    console.log("page   " + this.SellRent);
     this.housingService.getAllProperties(this.SellRent).subscribe(
       data => {
         this.properties = data;
@@ -38,11 +42,27 @@ export class PropertyListComponent implements OnInit {
           this.properties = [newProperty, ...this.properties];
         }*/
 
-        console.log(data);
-        console.log(this.route.snapshot.url.toString());
-        console.log(this.SellRent);
-      }  
+        //console.log(data);
+        //console.log(this.SellRent);
+      }
     );
+  }
+
+  onCityFilter() {
+    this.SearchCity = this.City;
+  }
+
+  onCityFilterClear() {
+    this.SearchCity = '';
+    this.City = '';
+  }
+
+  onSortDirection() {
+    if (this.SortDirection === 'desc') {
+      this.SortDirection = 'asc';
+    } else {
+      this.SortDirection = 'desc';
+    }
   }
 
 }

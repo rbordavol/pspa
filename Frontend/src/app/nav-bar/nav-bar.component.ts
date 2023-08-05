@@ -15,8 +15,8 @@ export class NavBarComponent implements OnInit {
   }
 
   loggedin(){
-    if(localStorage.getItem('token')){
-      this.loggedinUser = (localStorage.getItem('token') || '');
+    if(localStorage.getItem('userName')){
+      this.loggedinUser = (localStorage.getItem('userName') || '');
     } else {
       this.loggedinUser = '';
     }
@@ -25,6 +25,7 @@ export class NavBarComponent implements OnInit {
 
   onLogout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('userName');
     this.alertify.success("You are logged out.");
   }
 }

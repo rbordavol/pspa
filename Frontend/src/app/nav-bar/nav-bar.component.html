@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: steelblue;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">HSPA</a>
+    <a class="navbar-brand" href="/">PSPA</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,7 +16,7 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/add-property">List Property (Free)</a>
         </li>
       </ul>
-    </div>  
+    </div>
     <div>
       <ul class="nav navbar-nav">
         <li *ngIf="!loggedin()" class="nav-item">
@@ -32,7 +32,7 @@
         <!--<li *ngIf="loggedin()" class="nav-item">
           <a class="nav-link" (click)="onLogout()">Logout</a>
         </li>-->
-        
+
         <div *ngIf="loggedin()" class="dropdown" dropdown>
           <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
             Welcome {{loggedinUser}}
@@ -56,7 +56,7 @@
             </a>
           </div>
         </div>
-      
+
       </ul>
     </div>
   </div>

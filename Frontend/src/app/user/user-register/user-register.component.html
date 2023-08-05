@@ -1,7 +1,9 @@
 <div class="col-4">
   <div class="col-6 m-auto"></div>
   <div class="card m-auto">
-    <div class="card-header">Register</div>
+    <div class="card-header">
+      <h3>Register</h3>
+    </div>
     <div class="card-body">
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <div class="form-group col-12">
@@ -33,7 +35,7 @@
           <input type="password" class="form-control" formControlName="confirmPassword">
           <span *ngIf="!registrationForm.controls['confirmPassword']?.valid && (registrationForm.controls['confirmPassword'].touched || userSubmitted)" class="error-block">
             <span *ngIf="registrationForm.controls['confirmPassword'].hasError('required')">Please provide password</span>
-          </span>          
+          </span>
           <span *ngIf="registrationForm.hasError('mismatchedPasswords') &&
           registrationForm.controls['confirmPassword'].valid " class="error-block">Password does not match</span>
         </div>
